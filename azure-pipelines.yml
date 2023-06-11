@@ -18,23 +18,3 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-- name: Install gnupg
-  apt:
-    name: gnupg2
-    state: present
-    update_cache: yes
-
-- name: Install ELK APT Repo Signing Key
-  apt_key:
-    url: "{{ ELK_APT_REPO_KEY }}"
-    state: present
-
-- name: Install ELK 8.x APT Repo 
-  apt_repository:
-    repo: "{{ ELK_8_APT_REPO }}"
-    state: present
-
-- name: Update Repo cache and install Filebeat
-  apt:
-    name: filebeat=8.5.2
-    update_cache: yes
